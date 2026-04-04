@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+
+       
+    </head>    
+<body>
+    <div class="nav-container" th:fragment="nav">
+         <!-- // th:fragment là sử dụng để định nghĩa một phần tái sử dụng trong Thymeleaf  -->
+        <h1>ADMIN CONTROL </h1>
+        <div class = "divider"></div>
+
+        <nav class ="side-bar">
+            <ul>
+                <li>
+                    <a th:href ="@{/admin/dashboard}">
+                        <i class="fa-solid fa-house"></i>
+                        Tổng quan 
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/addProduct}">
+                       <i class="fa-solid fa-circle-plus"></i>
+                        Thêm sản phẩm
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/manageProduct}">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        Quản lý sản phẩm
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/manageOrder}">
+                        <i class="fa-solid fa-receipt"></i>
+                        Quản lý đơn hàng
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/manageCustomer}">
+                        <i class="fa-solid fa-users"></i>
+                        Khách hàng
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+</body>
+</html>

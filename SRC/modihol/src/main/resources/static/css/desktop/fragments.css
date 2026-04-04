@@ -1,0 +1,111 @@
+/* dùng NavAdmin */
+.nav-container{
+}
+.nav-container h1{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color:white;
+    text-align: center;
+    padding-top: 35px;
+}
+.divider{
+    border: 1px solid;
+    color:white;
+    margin: 10px 0 20px 0;
+}
+.side-bar{}
+.side-bar ul{
+    display:flex;
+    flex-direction:column;
+    gap: 15px;
+}
+.side-bar ul li{
+    list-style: none;
+    transition: 0.3s;
+}
+.side-bar ul li:hover{
+    background-color: rgba(226, 225, 225, 0.3);
+}    
+.side-bar ul li a{
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+
+    display:flex;
+    gap: 10px;
+    padding:0 20px;
+    align-items:center;
+    justify-content: flex-start;
+    height: 50px;
+}
+.side-bar ul li a i{
+    color:black;
+    width:30px;
+    text-align: center;
+}
+
+/* dùng Pagination */
+.pagination{
+    margin-top: 60px;
+  
+}
+.pagination-control{
+    display:flex;
+    gap: 38px;
+    justify-content: center;
+}
+.pagination-control a{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination-control a button{
+    cursor: pointer;
+}
+.pagination-control span{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+}
+.pagination-control span.active{
+    background-color :#748C70;
+    color:white;
+    transform: scale(1.1);
+}
+.pagination-control span a{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    color:black;
+    transition: all 0.3s ease;
+}    
+.pagination button{
+    border: none;
+    font-size: 25px;
+    font-weight: 700;
+    color:black;
+    background-color: transparent;
+
+}
+.pagination button i{
+    width:30px;
+    height: 30px;
+    text-align: center;
+}
+/* status  */
+.status-pending { background-color: rgb(233, 186, 100); }
+.status-confirm { background-color: #9E7F01; }
+.status-shipping { background-color: orange; }
+.status-delivered { background-color: #18732fbd; }
+.status-cancel { background-color: red; }

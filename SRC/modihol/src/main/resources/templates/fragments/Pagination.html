@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+    <div class="pagination" th:fragment="pagination(page,baseUrl)">
+        <div class="pagination-control">
+            <a th:if="${page.hasPrevious()}" th:href="@{${baseUrl}(page=${page.number - 1})}">
+                <button>
+                        <i class="fa-solid fa-angle-left"></i>
+                </button>
+            </a>
+            <span th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+                th:classappend="${i == page.number} ? 'active' : ''"
+            >
+                <a th:href="@{${baseUrl}(page=${i})}"
+                    th:text="${i + 1}" 
+                    
+                >
+                </a>
+            </span>
+            <a th:if="${page.hasNext()}" th:href="@{${baseUrl}(page=${page.number + 1})}">
+                <button>
+                        <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </a>
+
+        </div>
+    </div>
+</body>
+</html>

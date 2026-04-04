@@ -36,19 +36,19 @@ public class Order {
     @Column(name = "total_amount", nullable = false, precision = 20, scale = 2)
     private BigDecimal totalAmount;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name ="confirmed_at", nullable =false)
+    @Column(name ="confirmed_at")
     private LocalDateTime confirmedAt;
 
-    @Column(name = "shipping_at", nullable = false)
+    @Column(name = "shipping_at")
     private LocalDateTime shippingAt;
 
-    @Column(name = "completed_at", nullable = false)
+    @Column(name = "completed_at")
     private LocalDateTime completedAt;
 
-    @Column(name = "canceled_at", nullable = false)
+    @Column(name = "canceled_at")
     private LocalDateTime canceledAt;
     // MỐi quan hệ 
 

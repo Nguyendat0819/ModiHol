@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+     <!-- csss -->
+    <link rel="stylesheet" th:href=@{/css/desktop/fragments.css} />
+    <link rel="stylesheet" th:href=@{/css/desktop/dashboard.css} />
+    <link rel="stylesheet" th:href=@{/css/desktop/reset.css}/>
+     <!-- js -->
+    <title>Trang chủ Admin </title>
+</head>
+<body>
+    <content class="content">
+
+        <div class="left-content ">
+            <div class="nav-content ">
+                <div th:replace="fragments/NavAdmin :: nav"></div>
+            </div>
+        </div>
+        <div class="right-content ">
+            <h1>Tổng Quan Hệ Thống</h1>
+            <div class="general">
+                <div class="general-item" style="border-left: 2px solid blue;">
+                    <div class="menu-title">Tổng Đơn Hàng</div>
+                    <div class="data">20</div>
+                </div>
+                <div class="general-item" style="border-left: 2px solid green;">
+                    <div class="menu-title">Doanh Thu</div>
+                    <div class="data">1,000,000 VNĐ</div>
+                </div>
+                <div class="general-item" style="border-left: 2px solid orange;">
+                    <div class="menu-title">Khách Hàng</div>
+                    <div class="data">100</div>
+                </div>
+                <div class="general-item" style="border-left: 2px solid red;">
+                    <div class="menu-title">Sản Phẩm</div>
+                    <div class="data">30</div>
+                </div>
+            </div>
+
+            <div class="bottom-content">
+                <div class="menu-orders">
+                    <h1>Đơn Hàng Mới nhất </h1>
+
+                    <div class="table-wrapper">
+                        <table class="order-table">
+                            <thead>
+                                <tr class="order-row-title">
+                                    <th>Mã Đơn Hàng</th>
+                                    <th>Khách Hàng</th>
+                                    <th>Ngày Đặt</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Trạng Thái</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each="orderSumary : ${orderSumaryPage.content}" class="order-row">
+                                    <td th:text="${orderSumary.Id}"></td>
+                                    <td th:text="${orderSumary.username}"></td>
+                                    <td>
+                                        <div class="" th:text="${#temporals.format(orderSumary.createdAt, 'dd/MM/yyyy')}"></div>
+                                        <small th:text="${#temporals.format(orderSumary.createdAt, 'HH:mm:ss')}"></small>
+                                    </td>
+                                    <td th:text="${#numbers.formatDecimal(orderSumary.totalAmount, 0, 'POINT', 0,'POINT')} + 'VNĐ'"></td>
+                                    <td th:text="${#strings.toString(orderSumary.status) == 'PENDING' ? 'Chờ xử lý':
+                                        (#strings.toString(orderSumary.status) == 'CONFIRM' ? 'Đã xác nhận': 
+                                        (#strings.toString(orderSumary.status) == 'SHIPPING' ? 'Đang giao hàng':
+                                        (#strings.toString(orderSumary.status) == 'DELIVERED' ? 'Đã giao' : 'Đã hủy') 
+                                        ))
+                                    }"
+                                        th:classappend ="${#strings.toString(orderSumary.status) == 'PENDING' ? 'status-pending':
+                                        (#strings.toString(orderSumary.status) == 'CONFIRM' ? 'status-confirm': 
+                                        (#strings.toString(orderSumary.status) == 'SHIPPING' ? 'status-shipping':
+                                        (#strings.toString(orderSumary.status) == 'DELIVERED' ? 'status-delivered' : 'status-cancel') 
+                                        ))
+                                    }"
+                                    ></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- pagination
+            <div th:replace="fragments/Pagination :: pagination(${page}, ${baseUrl})"></div>     -->
+            <div th:replace="fragments/Pagination :: pagination(${orderSumaryPage}, ${baseUrl})"></div>   
+        </div>
+ 
+    </content>
+</body>
+</html>

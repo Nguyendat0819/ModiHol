@@ -1,0 +1,71 @@
+.right-content{
+    padding:0 20px;
+    background-color: rgba(178, 177, 170, 0.3);
+}
+.right-content h1{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color:black;
+    padding-top:35px;
+
+}
+/* cho general  */
+.general{
+    display: flex;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.general-item{
+    width: 25%;
+    height:100px;
+    background-color: white;
+}
+.menu-title{
+    padding:5px 15px;
+}
+.data{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 15px;
+}
+
+/* bottom content  */
+
+.bottom-content{
+    min-height: 40%;
+    margin-top:60px;
+    padding-bottom: 50px;
+    background-color: white;
+}
+.menu-orders{
+
+}
+.menu-orders h1{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color:black;
+    padding:10px 15px;
+}
+
+/* table  */
+.table-wrapper{
+   margin: 10px 30px;
+}
+.order-table{
+    width:100%;
+    border-collapse: collapse;
+}
+.order-row-title{
+    height:40px;
+    background-color: rgba(178, 177, 170, 0.3);
+}
+.order-row{
+    height:50px;
+    border-top: 1px solid #D9D9D9;
+}
+.order-row td{
+    text-align: center;
+    padding: 10px 0;
+}
