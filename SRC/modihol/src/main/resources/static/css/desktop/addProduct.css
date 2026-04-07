@@ -1,0 +1,143 @@
+.down-content{
+    height:80%;
+}
+.form-wrapper{
+    display:flex;
+    gap:30px;
+    padding: 0 25px;
+    height:100%;
+}
+.up-content h1{
+    padding-top: 35px;
+    padding-left: 45px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.deliver-content{
+    border: 1px solid #000000;
+    margin: 5px 0 20px 0;
+}
+.form-left{
+    width:70%;
+}
+.form-right{
+    width:30%;
+}
+.form-left-up,
+.form-left-down,
+.form-right-content{
+    border: 2px solid;
+}
+.form-left-up{
+    margin-bottom:85px;
+    min-height:25%;
+}
+.form-left-down{
+    min-height:30%;
+}
+.form-right-content{
+    min-height:50%;
+    margin-bottom: 25px;
+}
+.form-right-header{}
+.form-right-header label{
+    font-size: 20px;
+    font-weight: 500;
+    margin:30px 20px;
+}
+.deliver-image{
+    border:1px solid #C3BBBB;
+}
+.form-right-image{
+    margin: 20px;
+    display:flex;
+    align-items:center;
+}
+.form-right-image label{
+    margin-left:10px;
+}
+.form-right-image input{
+    font-size: 15px;
+   
+}
+.image-preview{
+    width:15%;
+}
+.image-preview img{
+   width:100%;
+}
+.form-button{
+    height:10%;
+    width:40%;
+    margin: 0 auto;
+}
+.form-button button{
+    width:100%;
+    height:100%;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: #748C70;
+    color:aliceblue;
+}
+.form-group{
+    margin: 10px 35px;
+    display: flex;
+    flex-direction: column;
+
+}
+.form-group label{
+    font-size: 18px;
+    font-weight: 500;
+}
+.form-group input{
+    height:35px;
+    font-size: 20px;
+    padding:10px;
+}
+
+.form-row{
+    display: flex;
+
+}
+.form-row .form-group{
+    flex:1;
+}
+.form-left-header{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    height:40px;
+    background-color: #BCB7B7;
+    padding:0 50px;
+}
+.form-left-header label{
+    font-size: 20px;
+    font-weight: 700;
+}
+.form-left-content{}
+.form-left-content input{
+    width:40%;
+    height:35px;
+    font-size: 20px;
+    margin:10px 20px;
+    height:35px;
+    padding:10px;
+}
+.form-left-content button{
+    width:10%;
+    height:35px;
+    font-size: 20px;
+    font-weight:500;
+    border:none;
+    color:aliceblue;
+    background-color: #FF383C;
+}
+.form-left-down .add-quatity{
+    border:none;
+    font-size:20px;
+    padding:10px;
+    margin:10px 20px;
+    background-color: #748C70;
+    color:aliceblue;
+    border-radius: 5px;
+}

@@ -34,5 +34,14 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
     
-    
+    public Integer getId(){
+        return id;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setParent(Category parent){
+        this.parent = parent;
+    }
 }

@@ -21,9 +21,11 @@ body {
 .left-content{
     width: 20%;
     height:auto;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     background-color: #748C70;
 }
 .right-content{
-    width:80%
+    width:80%;
+    height:auto;
+    background-color: rgba(178, 177, 170, 0.3);
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm sản phẩm </title>
+    <link rel="stylesheet" th:href="@{/css/desktop/fragments.css}"/>
+    <link rel="stylesheet" th:href="@{/css/desktop/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/desktop/addProduct.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <content class="content">
+        <div class="left-content">
+            <div class="nav-content">
+                <div th:replace="fragments/NavAdmin :: nav"></div>
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="up-content">
+                <h1>Thêm sản phẩm</h1>
+                <div class="deliver-content"></div>
+            </div>
+            <div class="down-content">
+                <form
+                    th:action="@{/admin/addProductSubmit}"
+                    th:object="${addProductDTO}"
+                    method="post"
+                    class="form-wrapper"
+                    enctype="multipart/form-data"
+                >
+                    <div class="form-left">
+                        <div class="form-left-up">
+                            <div class="form-group">
+                                <label for="productName">Tên sản phẩm</label>
+                                <input type="text" id ="productName" name ="productName" autocomplete ="off" required></input>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="price">Giá gốc (VND)</label>
+                                    <input type="number" id = "price"name ="price" autocomplete="off" required></input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoryName">Danh Mục</label>
+                                    <input type ="text" id="categoryName" name="categoryName" autocomplete="off" required></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-left-down">
+                            <div class="form-left-downUp">
+                                <div class="form-left-header">
+                                    <label>Kích Thước</label>
+                                     <label  style="padding-right: 100px;">Số Lượng</label>
+                                </div>
+                                <div class="form-left-content">
+                                    <input type="text"  name="size" autocomplete="off" required></input>
+                                    <input type="number" name="stock" autocomplete="off"required ></input>
+                                    <button class="btn-delete" type="button">Xóa</button>
+                                </div>
+                            </div>
+
+                            <button class="add-quatity" type="button">Thêm</button>
+                        </div>
+                    </div>
+                    <div class="form-right">
+                        <div class="form-right-content">
+                            <div class="form-right-header">
+                                <label>Ảnh sản phẩm</label>
+                                <div class="deliver-image"></div>
+                            </div>
+                            <div class="form-right-image" th:each ="i : ${#numbers.sequence(1,4)}">
+                                <div class="image-preview">
+                                    <img class="preview-image"></img>
+                                </div>
+                                <label>
+                                    <input type ="file" name ="images" accept="image/*" onchange="previewImage(this)" multiple></input>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-button">
+                            <button type="submit">Lưu Sản Phẩm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </content>
+    <script th:src="@{/js/addProduct.js}"></script>
+</body>
+</html>
