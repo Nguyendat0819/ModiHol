@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link rel="stylesheet" th:href="@{/css/desktop/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/desktop/fragments.css}"/>
+    <link rel="stylesheet" th:href="@{/css/desktop/manageProduct.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap}">
+</head>
+</head>
+<body>
+    <content class="content">
+        <div class="left-content">
+            <div class="nav-content">
+                <div th:replace="fragments/NavAdmin :: nav"></div>
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="right-content-up">
+                <h1>Danh Sách Sản Phẩm</h1>
+            </div>
+            <div class="right-content-down">
+                <div class="wrapper-table">
+                        <form th:action="@{/admin/manageProduct}" method="get" class="table-nav">
+                            <div class="item-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input placeholder="Tìm Kiếm Sản phẩm: " name="keyword" th:value="${keyword}"> 
+                                </input>
+                            </div>
+                            <div class="item-select">
+                                <select name="categoryName"  class="select-category">
+                                    <option disabled selected>Loại Sản Phẩm</option>
+                                    <option th:each="c : ${categories}" th:value="${c.name}" th:text="${c.name}"  th:selected ="${categoryName == c.name}" >
+
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="item-select">
+                                <select name="status" class="select-status">
+                                    <option disabled selected>Trang thái</option>
+                                    <option value="true" th:selected="${status == 'true'}">Đang Bán</option>
+                                    <option value="false" th:selected="${status == 'false'}">Ngừng Bán</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn-search" type="submit">
+                                <i class="fa-solid fa-filter"></i>
+                                Tìm Kiếm
+                            </button>
+                            <!-- Nút Reset -->
+                            <button class="btn-reset" onclick="resetForm()" type="button">
+                                <i class="fa-solid fa-trash-can"></i>
+                                Xóa lọc
+                            </button>
+                        </form>
+                    <table class="manage-product">
+                        <thead class="right-content-nav" style="height:40px">
+                            <th>Mã Sản Phẩm</th>
+                            <th>Sản Phẩm</th>
+                            <th>Giá Sản Phẩm</th>
+                            <th>Số Lượng</th>
+                            <th>Trạng Thái</th>
+                            <th>Hành Động</th>
+                        </thead>
+                        <tbody class="right-content-product" th:each="p : ${products.content}">
+                            <td th:text="${p.id}" class="product-id"></td>
+                            <td class="image-name-size">
+                                <div class="image-wrapper">
+                                    <img th:src="${p.imageUrl}" class="imageUrl"></img>                        
+                                </div>
+                                <div class="product-name-size">
+                                    <span th:text="${p.productName}" class="product-name"></span>
+                                    <div class="">
+                                        <span th:text="${#strings.listJoin(p.size,',')}"></span>
+                                    </div>
+                                </div>
+                            </td>                       
+                            <td th:text="${#numbers.formatDecimal(p.price,0,'POINT',0,'POINT') + ' VND'}" class="product-price"></td>
+                            <td th:text="${p.stock}" class="product-stock"></td>
+                            <td th:text="${p.status} ? 'Đang Bán' : 'Ngừng Bán '" th:style="${p.status ? 'color:green' : 'color:red'}" class="product-stock"></td>
+                            <td class="button-action ">
+                                <div class="action">
+                                    <button class="btn-down">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                        Chi Tiết 
+                                    </button>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:replace="fragments/Pagination :: pagination(${products}, ${baseUrl})"></div>   
+            </div>
+        </div>
+    </content>
+</body>
+<script th:src="@{/js/manageProduct.js}"></script>
+</html>
