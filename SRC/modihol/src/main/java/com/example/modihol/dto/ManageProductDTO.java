@@ -14,6 +14,7 @@ public class ManageProductDTO {
     private Long stock;
     private String name;
     private String imageUrl;
+    private List<VariantDTO> variants;
 
     public ManageProductDTO(Integer id,String productName, Boolean status,BigDecimal price,Long stock,String name,String imageUrl){
         this.id = id;
@@ -29,5 +30,8 @@ public class ManageProductDTO {
     }
     public void setSize(List<String> size) {
         this.size = size;
+    }
+    public void setVariants(List<VariantDTO> variants){
+        this.variants = variants;
     }
 }

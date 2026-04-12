@@ -23,6 +23,9 @@ public class AdminManageProductController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductVariantService productVariantService;
     @GetMapping("/manageProduct")
     public String viewManageProduct(
         Model model,
@@ -39,6 +42,8 @@ public class AdminManageProductController {
         model.addAttribute("categoryName", categoryName);
 
         model.addAttribute("categories", categoryService.getAllCategory());
+
+        // model.addAttribute("listSizeAndStock", productVariantService.getBySizeAndStock(products.size, products.stock ));
         return"admin/manageProduct";
     }
 }

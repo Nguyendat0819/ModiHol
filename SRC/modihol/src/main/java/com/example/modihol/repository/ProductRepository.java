@@ -1,5 +1,6 @@
 package com.example.modihol.repository;
 import com.example.modihol.dto.ManageProductDTO;
+import com.example.modihol.dto.VariantDTO;
 import com.example.modihol.entity.Product;
 import com.example.modihol.entity.ProductImage;
 import org.springframework.data.domain.*;
@@ -49,10 +50,10 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     );
 
     @Query("""
-        SELECT DISTINCT pv.product.id,pv.size
+        SELECT DISTINCT pv.product.id,pv.size,pv.stock
         From ProductVariant pv
     """)
-    List<Object[]> getAllSizes();
+    List<Object[]> getAllSizesAndStock();
 
 
 }

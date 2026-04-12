@@ -56,41 +56,98 @@
                                 Xóa lọc
                             </button>
                         </form>
-                    <table class="manage-product">
-                        <thead class="right-content-nav" style="height:40px">
-                            <th>Mã Sản Phẩm</th>
-                            <th>Sản Phẩm</th>
-                            <th>Giá Sản Phẩm</th>
-                            <th>Số Lượng</th>
-                            <th>Trạng Thái</th>
-                            <th>Hành Động</th>
-                        </thead>
-                        <tbody class="right-content-product" th:each="p : ${products.content}">
-                            <td th:text="${p.id}" class="product-id"></td>
-                            <td class="image-name-size">
-                                <div class="image-wrapper">
-                                    <img th:src="${p.imageUrl}" class="imageUrl"></img>                        
-                                </div>
-                                <div class="product-name-size">
-                                    <span th:text="${p.productName}" class="product-name"></span>
-                                    <div class="">
-                                        <span th:text="${#strings.listJoin(p.size,',')}"></span>
-                                    </div>
-                                </div>
-                            </td>                       
-                            <td th:text="${#numbers.formatDecimal(p.price,0,'POINT',0,'POINT') + ' VND'}" class="product-price"></td>
-                            <td th:text="${p.stock}" class="product-stock"></td>
-                            <td th:text="${p.status} ? 'Đang Bán' : 'Ngừng Bán '" th:style="${p.status ? 'color:green' : 'color:red'}" class="product-stock"></td>
-                            <td class="button-action ">
-                                <div class="action">
-                                    <button class="btn-down">
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                        Chi Tiết 
-                                    </button>
-                                </div>
-                            </td>
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="manage-product">
+                            <thead class="right-content-nav" style="height:40px">
+                                <th>Mã Sản Phẩm</th>
+                                <th>Sản Phẩm</th>
+                                <th>Giá Sản Phẩm</th>
+                                <th>Số Lượng</th>
+                                <th>Trạng Thái</th>
+                                <th>Hành Động</th>
+                            </thead>
+                            <tbody class="right-content-product" >
+                                <th:block th:each="p : ${products.content}">
+                                    <tr class="product-row">
+                                        <td th:text="${p.id}" class="product-id"></td>
+                                        <td >
+                                            <div class="image-name-size">
+                                                <div class="image-wrapper">
+                                                    <img th:src="${p.imageUrl}" class="imageUrl"></img>                        
+                                                </div>
+                                                <div class="product-name-size">
+                                                    <span th:text="${p.productName}" class="product-name"></span>
+                                                    <div class="">
+                                                        <span th:text="${#strings.listJoin(p.size,',')}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>                       
+                                        <td th:text="${#numbers.formatDecimal(p.price,0,'POINT',0,'POINT') + ' VND'}" class="product-price"></td>
+                                        <td th:text="${p.stock}" class="product-stock"></td>
+                                        <td>
+                                            <span th:style="${p.status ? 'color:green' : 'color:red'}" class="status-badge ">
+                                                <i class="fa-solid fa-circle" style="font-size: 6px"></i>
+                                                <span th:text="${p.status ? 'Đang Bán' : 'Ngừng Bán'}" class="product-status"></span>
+                                            </span>
+                                        </td>
+                                        <td class="button-action ">
+                                            <button class="btn-down">
+                                               <i class="fa-solid fa-eye"></i>
+                                                Chi Tiết 
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class ="detail-row">
+                                        <td colspan="6">
+                                            <div class="detail-container">
+                                                <div class="detail-card">
+                                                <h4>Danh sách size và tồn kho</h4>
+                                                <table class="detail-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Size</th>
+                                                            <th>Số Lượng</th>
+                                                            <th>Hành Động</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="v : ${p.variants}" class="size-stock-row">
+                                                            <div class="">
+                                                                <td>
+                                                                    <span th:text="${v.size}" class="size-span"></span>
+                                                                    <input type="text" class="edit-size-input" autocomplete="off">
+                                                                </td>
+                                                                <td>
+                                                                    <span th:text="${v.stock}" class="stock-span"></span>
+                                                                    <input type="number" class="edit-stock-input" autocomplete="off">
+                                                                </td>
+                                                            </div>
+                                                            <td class="button-action-size">
+                                                                <button class="edit-size-stock">
+                                                                    <i class="fa-solid fa-pen edit"></i>
+                                                                </button>
+                                                                <button class="delete-size-stock">
+                                                                    <i class="fa-solid fa-trash-can trash"></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <form class="add-size-box" th:action="@{/admin/manageProduct/update}" method="post">
+                                                    <span>Thêm size mới</span>
+                                                    <input type="text" placeholder="Nhập size mới" autocomplete="off" name="newSize"  class="" required >
+                                                    <input type="number" placeholder="Số lượng" autocomplete="off" name="newStock" required>
+                                                    <button class="btn-search-detail">Lưu</button>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </th>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div th:replace="fragments/Pagination :: pagination(${products}, ${baseUrl})"></div>   
             </div>

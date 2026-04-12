@@ -32,11 +32,12 @@ body{
     padding: 16px;
     border-radius: 16px;
     align-items: center;
-    width:90%;
+    width:100%;
     margin:auto;
     background: white;
     border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
 }
 .item-search{
     flex:1;
@@ -142,61 +143,193 @@ body{
 .btn-reset:active{
     transform: translateY(0);
 }
+/* nội dung  */
+.table-container{
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgb(170 187 222 / var(--tw-border-opacity, 1));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
 .manage-product{
-    width:90%;
-    margin: 50px auto;
-    border:1px solid #50504f;
+    width:100%;
     border-collapse:collapse;
+    text-align: left;
 }
-.right-content-nav{
-    background-color: #E0E0DD;
+.right-content-nav th{
+   background-color: #f8fafc;
+   padding: 16px;
+   font-size: 18px;
+   text-transform: uppercase;
+   color: #64748b;
+   border-bottom: 1px solid #94a3b8;
 }
+
 .right-content-product{}
 
-.product-id,
-.product-size,
-.product-price,
-.product-stock
-{
+.right-content-product td{
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+.product-id{
     font-size: 20px;
-    font-weight: 500;
-    text-align: center;
+    font-weight:600;
+    color:#64748b;
+    width: 180px;
 }
 .image-name-size{
     display:flex;
-    justify-content: center;
     align-items: center;
+    gap: 16px;
 }
-.product-name-size{
-    display:inline-grid;
+.image-wrapper{
+    width: 140px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f1f5f9;
+    border: 1px solid rgb(170 187 222 / var(--tw-border-opacity, 1));
 }
 
 .imageUrl{
-    width:140px;
-    height:150px;
-    padding:20px;
+    width:100%;
+    height:100%;
 }
 .product-name{
-
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 4px;
 }
 .product-size{
-    display:contents;
-    padding:0 10px
+   background: #f1f5f9;
+   padding: 2px 8px;
+   border-radius: 4px;
+   font-size: 14px;
+   color:#64748b;
 }
-.product-price{}
-.product-stock{}
-
-.button-action{
-    text-align: center;
+.product-price{
+    font-weight: 700;
+    font-size: 18px;
+    color: black;
 }
-.action{}
-.action button{
+.product-stock{
     font-size: 20px;
+    font-weight: 400;
+}
+.status-badge{
+    background: #f0fdf4;
+    color:#5DCA7A;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+.product-status{
+   
+}
+.btn-down{
+    background-color: #eff6ff;
+    color: #3b82f6;
+    border: 1px solid #bfdbfe;
+    padding:8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.btn-down:hover{
+    background-color: #3b82f6;
+    color:white;
+    transform:translateY(-2px);
+}
+.detail-row{
+    display: none;
+    background-color: #f8fafc;
+
+}
+.detail-row.active{
+    display: table-row;
+}
+.detail-container{
+    padding: 20px 40px;
+}
+.detail-card{
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgb(170 187 222 / var(--tw-border-opacity, 1));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+}
+.detail-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.detail-table th{
+    text-align: left;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.button-action-size{
+
+}
+.button-action-size button{
     border: none;
-    background-color: #7DC1FD;
-    padding:10px;
-    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    padding-right: 10px;
+}
+.edit{
+    color:#3b82f6;
+}
+.trash{
+    color: #ef4444;
+}
+.add-size-box{
+    margin-top: 15px;
+    background-color: #bfdbfd;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 4px;
+}
+.add-size-box input{
+    padding: 6px 10px;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    outline: none;
+    font-size: 0.85rem;
+    width: 150px;
+}
+
+.btn-search-detail{
+    background-color: #359658;
+    color: white;
+    border: none;
+    padding: 6px 30px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* cho input cập nhật và chỉnh sửa  */
+.edit-size-input,
+.edit-stock-input{
+    display: none;
+    padding: 5px;
 }
 .pagination{
     margin-bottom: 40px;

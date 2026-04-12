@@ -8,6 +8,8 @@ import com.example.modihol.repository.CategoryRepository;
 import com.example.modihol.entity.*;
 import com.example.modihol.dto.AddProductDTO;
 import com.example.modihol.dto.ManageProductDTO;
+import com.example.modihol.dto.VariantDTO;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
@@ -86,21 +88,22 @@ public class ProductService {
         if(categoryName != null) categoryName = categoryName.trim();
         Page<ManageProductDTO> productPage = productRepo.getAllProducts(keyword, status, categoryName, pageable);
         List<ManageProductDTO> products = productPage.getContent();
-        List<Object[]> sizeData = productRepo.getAllSizes();
+        List<Object[]> sizeData = productRepo.getAllSizesAndStock();
 
         // Map: productId -> list size
-        Map<Integer, List<String>> sizeMap = new HashMap<>();
+        Map<Integer, List<VariantDTO>> sizeMap = new HashMap<>();
 
         for(Object[] row : sizeData){
             Integer productId = (Integer) row[0];
             String size = (String) row[1];
+            Integer stock = (Integer) row[2];
 
-            sizeMap.computeIfAbsent(productId, k -> new ArrayList<>()).add(size);
+            sizeMap.computeIfAbsent(productId, k -> new ArrayList<>()).add(new VariantDTO(size, stock));
         }
 
         // set vào DTO
         for(ManageProductDTO p : products){
-            p.setSize(sizeMap.getOrDefault(p.getId(), new ArrayList<>()));
+            p.setVariants(sizeMap.getOrDefault(p.getId(), new ArrayList<>()));
         }
 
         return productPage;
