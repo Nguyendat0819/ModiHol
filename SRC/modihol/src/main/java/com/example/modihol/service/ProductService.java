@@ -94,11 +94,12 @@ public class ProductService {
         Map<Integer, List<VariantDTO>> sizeMap = new HashMap<>();
 
         for(Object[] row : sizeData){
-            Integer productId = (Integer) row[0];
-            String size = (String) row[1];
-            Integer stock = (Integer) row[2];
+            Integer variantId = (Integer) row[0];
+            Integer productId = (Integer) row[1];
+            String size = (String) row[2];
+            Integer stock = (Integer) row[3];
 
-            sizeMap.computeIfAbsent(productId, k -> new ArrayList<>()).add(new VariantDTO(size, stock));
+            sizeMap.computeIfAbsent(productId, k -> new ArrayList<>()).add(new VariantDTO( variantId,size, stock));
         }
 
         // set vào DTO

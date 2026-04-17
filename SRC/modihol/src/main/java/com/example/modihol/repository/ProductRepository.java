@@ -50,7 +50,7 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     );
 
     @Query("""
-        SELECT DISTINCT pv.product.id,pv.size,pv.stock
+        SELECT DISTINCT pv.id, pv.product.id,pv.size,pv.stock
         From ProductVariant pv
     """)
     List<Object[]> getAllSizesAndStock();
