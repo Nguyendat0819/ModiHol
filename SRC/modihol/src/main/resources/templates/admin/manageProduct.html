@@ -92,7 +92,7 @@
                                             </span>
                                         </td>
                                         <td class="button-action ">
-                                            <button class="btn-down">
+                                            <button class="btn-down" th:data-id="${p.id}">
                                                <i class="fa-solid fa-eye"></i>
                                                 Chi Tiết 
                                             </button>
@@ -101,43 +101,73 @@
                                     <tr class ="detail-row">
                                         <td colspan="6">
                                             <div class="detail-container">
-                                                <div class="detail-card">
-                                                    <h4>Danh sách size và tồn kho</h4>
-                                                    <table class="detail-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Size</th>
-                                                                <th>Số Lượng</th>
-                                                                <th>Hành Động</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr th:each="v : ${p.variants}" class="size-stock-row" th:data-id="${v.id}">
-                                                                    <td>
-                                                                        <span th:text="${v.size}" class="size-span"></span>
-                                                                        <input type="text" class="edit-size-input" autocomplete="off">
-                                                                    </td>
-                                                                    <td>
-                                                                        <span th:text="${v.stock}" class="stock-span"></span>
-                                                                        <input type="number" class="edit-stock-input" autocomplete="off">
-                                                                    </td>
-                                                                    <td class="button-action-size">
-                                                                        <button class="edit-size-stock" th:data-id = "${v.id}">
-                                                                            <i class="fa-solid fa-pen edit"></i>
-                                                                        </button>
-                                                                        <button class="delete-size-stock" th:data-id = "${v.id}">
-                                                                            <i class="fa-solid fa-trash-can trash"></i>
-                                                                        </button>
-                                                                    </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <form class="add-size-box" th:data-id="${p.id}">
-                                                        <span>Thêm size mới</span>
-                                                        <input type="text" placeholder="Nhập size mới" autocomplete="off" class="newSize" required >
-                                                        <input type="number" placeholder="Số lượng" autocomplete="off" class="newStock" required>
-                                                        <button class="btn-search-detail" type="button">Lưu</button>
-                                                    </form>
+                                                <div class="left-detail">
+                                                    <!-- <div class="image-detail" th:each="img :${p.imageUrl}">
+                                                        <img th:src="${img.imageUrl}" alt="">
+                                                    </div> -->
+                                                </div>
+                                                <div class="right-detail">
+                                                    <!-- sửa thông tin sản phẩm  -->
+                                                    <div class="edit-infor-detail">
+                                                        <div class="detail-name">
+                                                            <span th:text="${p.productName}"></span>
+                                                            <input type="text" class="edit-name" autocomplete="off">
+                                                        </div>
+                                                        <div class="detail-category">
+                                                            <span>Loại sản phẩm: </span>
+                                                            <span class="" th:text="${p.name}"></span>
+                                                        </div>
+                                                        <select th:data-id="${p.id}" class="detail-status">
+                                                            <option value="true" th:selected="${p.status}">Đang Bán</option>
+                                                            <option value="false" th:selected="${!p.status}">Ngừng Bán</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Sửa thông tin ảnh -->
+                                                    <div class="edit-image-detail">
+
+                                                    </div>
+                                                    <!-- Dưới là size với stock -->
+                                                    <div class="detail-card" >
+                                                        <div class="detail-price">
+                                                            <h4>Danh sách size và tồn kho</h4>
+                                                            <span th:data-price="${p.price}" th:text="${#numbers.formatDecimal(p.price,0,'POINT',0,'POINT') + 'VNĐ'}" class="price-value"></span>
+                                                        </div>
+                                                        <table class="detail-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Size</th>
+                                                                    <th>Số Lượng</th>
+                                                                    <th>Hành Động</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr th:each="v : ${p.variants}" class="size-stock-row" th:data-id="${v.id}">
+                                                                        <td>
+                                                                            <span th:text="${v.size}" class="size-span"></span>
+                                                                            <input type="text" class="edit-size-input" autocomplete="off">
+                                                                        </td>
+                                                                        <td>
+                                                                            <span th:text="${v.stock}" class="stock-span"></span>
+                                                                            <input type="number" class="edit-stock-input" autocomplete="off">
+                                                                        </td>
+                                                                        <td class="button-action-size">
+                                                                            <button class="edit-size-stock" th:data-id = "${v.id}">
+                                                                                <i class="fa-solid fa-pen edit"></i>
+                                                                            </button>
+                                                                            <button class="delete-size-stock" th:data-id = "${v.id}">
+                                                                                <i class="fa-solid fa-trash-can trash"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <form class="add-size-box" th:data-id="${p.id}">
+                                                            <span>Thêm size mới</span>
+                                                            <input type="text" placeholder="Nhập size mới" autocomplete="off" class="newSize" required >
+                                                            <input type="number" placeholder="Số lượng" autocomplete="off" class="newStock" required>
+                                                            <button class="btn-search-detail" type="button">Lưu</button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </td>

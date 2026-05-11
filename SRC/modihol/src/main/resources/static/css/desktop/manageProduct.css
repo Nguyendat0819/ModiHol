@@ -260,13 +260,45 @@ body{
 }
 .detail-container{
     padding: 20px 40px;
+    display: flex;
+    gap: 20px;
 }
+/* bên trái của chi tiết của 1 sản phẩm  */
+.left-detail{
+    flex: 1;
+}
+.image-detail img{
+    width: 100%;
+}
+.right-detail{
+    flex: 1;
+}
+.edit-infor-detail{
+    display: flex;
+    justify-content: space-between;
+}
+.detail-name{}
+.edit-name{
+    display: none;
+}
+.detail-category{}
+.detail-status{}
 .detail-card{
     background: white;
     border-radius: 12px;
     border: 1px solid rgb(170 187 222 / var(--tw-border-opacity, 1));
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     padding: 24px;
+}
+.detail-price{
+    display: flex;
+    justify-content: space-between;
+}
+.price-value{
+    padding: 10px;
+    background:#C2CAC4;
+    border-radius: 5px;
+    font-weight: 500;
 }
 .detail-table{
     width: 100%;

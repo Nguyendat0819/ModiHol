@@ -21,8 +21,12 @@ public class ProductVariantService {
     @Transactional
     public void updateVariant(Integer id, String size, Integer stock){
         ProductVariant variant = productVariantRepo.findById(id).orElseThrow(() -> new RuntimeException());
-        variant.setSize(size);
-        variant.setStock(stock);
+        if(size != null && !size.trim().isEmpty()){
+            variant.setSize(size);
+        } 
+        if(stock != null ){
+            variant.setStock(stock);
+        } 
         productVariantRepo.save(variant);
     }
 

@@ -10,7 +10,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,9 @@ public class AdminManageProductController {
 
     @Autowired
     private ProductVariantService productVariantService;
+
+    @Autowired
+    private ProductImageService producImageService;
     @GetMapping("/manageProduct")
     public String viewManageProduct(
         Model model,
@@ -46,11 +51,15 @@ public class AdminManageProductController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("status", status);
         model.addAttribute("categoryName", categoryName);
-
         model.addAttribute("categories", categoryService.getAllCategory());
-
         // model.addAttribute("listSizeAndStock", productVariantService.getBySizeAndStock(products.size, products.stock ));
         return"admin/manageProduct";
+    }
+    // hàm lấy sản phẩm chi tiết    
+    @GetMapping("/manageProduct/images/{productId}")
+    @ResponseBody
+    public List<String> viewListImage(@PathVariable Integer productId){
+        return producImageService.getImagesByProductId(productId);
     }
 
 

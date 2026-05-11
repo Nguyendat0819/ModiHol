@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModiHol - Destinations</title>
+
+ 
+
+    <!-- 2. React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- 3. Babel (để biên dịch mã JSX sang JS cho trình duyệt hiểu) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 4. Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Nơi React sẽ render giao diện -->
+    <div id="root"></div>
+
+    <!-- Gán Lucide Icons vào window để file home.jsx của bạn gọi được -->
+    <script>
+        window.lucideIcons = lucide;
+    </script>
+
+    <!-- 5. Import file home.jsx của bạn (nhớ để type="text/babel") -->
+    <script type="text/babel" src="/user/home.jsx"></script>
+</body>
+
+</html>

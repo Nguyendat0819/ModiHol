@@ -59,7 +59,21 @@ function ViewSizeAnhdStock(detailCard){
 
 }
 
+// Hàm load image
+async function loadImage(productId) {
+    const res = await fetch('/admin/manageProduct/images/' + productId);
+    const images = await res.json();
 
+    const boxImage = document.querySelector('.left-detail');
+    boxImage.innerHTML = "";
+    images.forEach( img => {
+        boxImage.innerHTML += `
+            <div>
+                <img src="${img}">
+            </div>
+        `;
+    });
+}
 // trường hợp cho chỉnh sửa size và stock
 document.addEventListener('click', (e) => {
 
@@ -115,6 +129,12 @@ document.addEventListener('click', (e) => {
             }
         })
         .catch(() => alert('Không thể kết nối server'));
+    }
+
+    const btnDown = e.target.closest('.btn-down');
+    if(btnDown){
+        const productId = btnDown.dataset.id;
+        loadImage(productId);
     }
 
     // ===== Xử lý nút Edit =====
@@ -222,7 +242,7 @@ document.addEventListener('click', (e) => {
         .catch(() => alert("không thể kết nối"));
     }
 
-    
+   
 
 });
 
